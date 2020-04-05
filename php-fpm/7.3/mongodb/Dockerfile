@@ -1,4 +1,3 @@
-# https://github.com/bitnami/bitnami-docker-php-fpm
 FROM pierreribault/php-fpm:7.3
 LABEL maintainer="Pierre Ribault <contact@pierreribault.fr>"
 LABEL description="PHP-FPM 7.3 with composer and MongoDB extension"
