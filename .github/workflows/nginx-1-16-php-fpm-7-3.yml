@@ -53,6 +53,6 @@ jobs:
           name: pierreribault/nginx_php-fpm
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: php-fpm/7.3/mongodb/Dockerfile
+          dockerfile: nginx_php-fpm/1.16/7.3/Dockerfile
           buildoptions: "--pull"
           tags: "1.16-7.3-mongodb"
