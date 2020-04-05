@@ -15,9 +15,9 @@ LC_ALL | `fr_FR.UTF-8`
 
 ## 📚 Images list
 
-Image | Tags | Github Action | Hadolint --ignore
-:-----------: | :-------------: | :-------------: | :-------------:
-[pierreribault/php-fpm](https://hub.docker.com/repository/docker/pierreribault/php-fpm) | `7.3` / `latest`<br> `7.3-mongodb`|![](https://github.com/pierreribault/toolbox-dockerfiles/workflows/PHP-FPM%207.3/badge.svg)| [DL3008](https://github.com/hadolint/hadolint/wiki/DL3008)
-- | `7.4` <br> `7.4-mongodb`|![](https://github.com/pierreribault/toolbox-dockerfiles/workflows/PHP-FPM%207.4/badge.svg)| [DL3008](https://github.com/hadolint/hadolint/wiki/DL3008)
-[pierreribault/nginx](https://hub.docker.com/repository/docker/pierreribault/nginx) | `1.16` / `latest`|![](https://github.com/pierreribault/toolbox-dockerfiles/workflows/Nginx%201.16/badge.svg)| [DL3008](https://github.com/hadolint/hadolint/wiki/DL3008)
+|Image | Tags | Github Action | Hadolint --ignore|
+|:-----------: | :-------------: | :-------------: | :-------------:|
+|[pierreribault/php-fpm](https://hub.docker.com/repository/docker/pierreribault/php-fpm) | `7.3` / `latest`<br> `7.3-mongodb`|![](https://github.com/pierreribault/toolbox-dockerfiles/workflows/PHP-FPM%207.3/badge.svg)| [DL3008](https://github.com/hadolint/hadolint/wiki/DL3008)|
+| - | `7.4` <br> `7.4-mongodb`|![](https://github.com/pierreribault/toolbox-dockerfiles/workflows/PHP-FPM%207.4/badge.svg)| [DL3008](https://github.com/hadolint/hadolint/wiki/DL3008)|
+|[pierreribault/nginx](https://hub.docker.com/repository/docker/pierreribault/nginx) | `1.16` / `latest`|![](https://github.com/pierreribault/toolbox-dockerfiles/workflows/Nginx%201.16/badge.svg)| [DL3008](https://github.com/hadolint/hadolint/wiki/DL3008)|
 
