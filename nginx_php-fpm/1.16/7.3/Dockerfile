@@ -18,7 +18,6 @@ COPY --from=php-fpm /tmp/apt_list.txt /tmp/apt_list.txt
 COPY /nginx_php-fpm/1.16/7.3/nginx.conf /opt/bitnami/nginx/conf/nginx.conf
 COPY /nginx_php-fpm/1.16/7.3/start.sh /start.sh
 
-# Pour mongo : autoconf build-essential libmagickwand-dev
 RUN apt-get update \
     && apt-get install --no-install-recommends -y $(cat < /tmp/apt_list.txt | tr '\n' ' ') \
     && rm -rf /var/lib/apt/lists/* \
