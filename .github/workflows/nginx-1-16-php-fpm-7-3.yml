@@ -1,0 +1,58 @@
+name: Nginx 1.16 + PHP-FPM 7.3
+on:
+  push:
+    paths:
+      - 'php-fpm/7.3/**'
+      - 'nginx/1.16/**'
+      - '.github/workflows/nginx-1-16-php-fpm-7-3.yml'
+  schedule:
+    - cron:  '0 1 * * *'
+
+jobs:
+  build-1-6-php-fpm-7-3:
+    name: Publish Nginx 1.16 / PHP-FPM 7.3 on dockerhub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Run hadolint on Dockerfile
+        if: github.event_name == 'push'
+        run: "docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 --ignore DL3027 --ignore SC2046 - < nginx_php-fpm/1.16/7.3/Dockerfile"
+
+      - name: Publish Nginx 1.16 / PHP-FPM 7.3 to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: pierreribault/nginx_php-fpm
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: nginx_php-fpm/1.16/7.3/Dockerfile
+          buildoptions: "--pull"
+          tags: "1.16-7.3,latest"
+
+  build-1-6-php-fpm-7-3-mongodb:
+    name: Publish Nginx 1.16 / PHP-FPM 7.3-mongodb on dockerhub
+    needs: [build-1-6-php-fpm-7-3]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "nginx_php-fpm/1.16/7.3/mongodb/Dockerfile"
+
+      - name: Run hadolint on Dockerfile
+        if: github.event_name == 'push' && steps.check_files.outputs.files_exists == 'true'
+        run: "docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 --ignore DL3027 --ignore SC2046 - < nginx_php-fpm/1.16/7.3/mongodb/Dockerfile"
+
+      - name: Publish Nginx 1.16 / PHP-FPM 7.3-mongodb to Registry
+        if: steps.check_files.outputs.files_exists == 'true'
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: pierreribault/nginx_php-fpm
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: php-fpm/7.3/mongodb/Dockerfile
+          buildoptions: "--pull"
+          tags: "1.16-7.3-mongodb"
