@@ -1,4 +1,4 @@
-name: PHP-FPM 7.4 Workflow
+name: PHP-FPM 7.4
 on:
   push:
     paths:
