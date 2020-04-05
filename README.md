@@ -1,16 +1,15 @@
 # 🛠 Toolbox - Dockerfiles 🐳
 
-This directory contains my basic images that meets **my personal needs** for my projects. All images present here are updated on Dockerhub at least one time each day.<br>
-For example, if I push an update on any Dockerfile, all related images will be re-build and push. Moreover, each day at 1:00 am GMT+1, a cronjob start to re-build each image and push.  
+This directory contains my basic images that meets **my personal needs** for my projects. All images present here are updated on Dockerhub at least one time each day.For example, if I push an update on any Dockerfile, all related images will be re-build and push. Moreover, each day at 1:00 am GMT+1, a cronjob start to re-build each image and push.  
 
 Each time I alter an image, my GitHub Action run Hadolint on the Dockerfile. The column **Hadolint --ignore** signify than I voluntarily ignore some good practices to produce my images.
 
-####What is Hadolint ?
+#### What is Hadolint ?
 > A smarter Dockerfile linter that helps you build best practice Docker images. <br>
 > The linter is parsing the Dockerfile into an AST and performs rules on top of the AST. <br>
 > It is standing on the shoulders of ShellCheck to lint the Bash code inside RUN instructions.
 >
-> -- <cite>source: [Hadolint](https://github.com/hadolint/hadolint)</cite>
+> -- _source: [Hadolint](https://github.com/hadolint/hadolint)_
 
 ## 🌎 Global specification 
 
@@ -37,6 +36,4 @@ LC_ALL | `fr_FR.UTF-8`
 
 As I said at the beginning, these images are build to **my personal needs** and I wanted to try the power of GitHub Action.
 
-I can't afford to keep every image running smoothly and that why there are automatically updated because I have great confidence in the Bitnami's images.
-
-Please! If you seriously want to use them don't hesitate to PR or fork the project 🚀
+I can't afford to keep every image running smoothly and that why there are automatically updated because I have great confidence in the Bitnami's images. Please! If you seriously want to use them don't hesitate to PR or fork the project 🚀
