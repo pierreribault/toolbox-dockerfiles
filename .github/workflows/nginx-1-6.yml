@@ -1,0 +1,28 @@
+name: Nginx 1.16
+on:
+  push:
+    paths:
+      - 'nginx/1.16/**'
+  schedule:
+    - cron:  '0 1 * * *'
+
+jobs:
+  build-1-6:
+    name: Publish Nginx 1.16 on dockerhub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Run hadolint on Dockerfile
+        if: github.event_name == 'push'
+        run: "docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < nginx/1.16/Dockerfile"
+
+      - name: Publish Nginx 1.16 to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: pierreribault/nginx_php-fpm
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: nginx/1.16/Dockerfile
+          buildoptions: "--pull"
+          tags: "1.16,latest"
