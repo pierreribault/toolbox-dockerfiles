@@ -2,8 +2,8 @@ name: PHP-FPM 7.4
 on:
   push:
     paths:
-      - 'php-fpm/7.4/Dockerfile'
-      - 'php-fpm/7.4/mongodb/Dockerfile'
+      - 'php-fpm/7.4/**'
+      - '.github/workflows/php-fpm-7-4.yml'
   schedule:
     - cron:  '0 1 * * *'
 
