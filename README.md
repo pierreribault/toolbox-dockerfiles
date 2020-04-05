@@ -1,6 +1,6 @@
 # 🛠 Toolbox - Dockerfiles 🐳
 
-This repository contains my images base that meets **my personal needs** for my projects.
+This directory contains my basic images that meets **my personal needs** for my projects. All images present here are updated on Dockerhub at least one time each day. For example, if I push an update on any Dockerfile, all related images will be re-build and push. Moreover, each day at 1:00 am GMT+1, a cronjob start to re-build each image and push.  
 
 ## 🌎 Global specification 
 
@@ -11,7 +11,7 @@ Key| Value
 --- | ---
 LANG | `fr_FR.UTF-8`
 LANGUAGE | `fr_FR:fr`
-LC_ALL | `fr_FR.UTF-8
+LC_ALL | `fr_FR.UTF-8`
 
 ## 📚 Images list
 
