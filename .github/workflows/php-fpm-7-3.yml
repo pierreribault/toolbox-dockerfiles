@@ -30,7 +30,7 @@ jobs:
 
   build-7-3-mongodb:
     name: Publish php-fpm 7.3-mongodb on dockerhub
-    needs: [build-7.3]
+    needs: [build-7-3]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
