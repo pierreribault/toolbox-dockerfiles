@@ -8,7 +8,7 @@ on:
     - cron:  '0 1 * * *'
 
 jobs:
-  build-7.3:
+  build-7-3:
     name: Publish php-fpm 7.3 on dockerhub
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +28,7 @@ jobs:
           buildoptions: "--pull"
           tags: "7.3,latest"
 
-  build-7.3-mongodb:
+  build-7-3-mongodb:
     name: Publish php-fpm 7.3-mongodb on dockerhub
     needs: [build-7.3]
     runs-on: ubuntu-latest
