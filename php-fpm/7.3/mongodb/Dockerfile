@@ -12,6 +12,7 @@ RUN apt-get update \
 
 RUN pecl install mongodb \
     && echo "extension=mongodb.so" >> /opt/bitnami/php/etc/php.ini \
+    && chown -R 1001:1001 /opt/bitnami/php \
     && rm -rf /tmp/pear
 
 USER 1001
