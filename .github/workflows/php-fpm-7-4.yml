@@ -1,0 +1,57 @@
+name: PHP-FPM 7.4 Workflow
+on:
+  push:
+    paths:
+      - 'php-fpm/7.4/Dockerfile'
+      - 'php-fpm/7.4/mongodb/Dockerfile'
+  schedule:
+    - cron:  '0 1 * * *'
+
+jobs:
+  build-7.4:
+    name: Publish php-fpm 7.4 on dockerhub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Run hadolint on Dockerfile
+        if: github.event_name == 'push'
+        run: "docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < php-fpm/7.4/Dockerfile"
+
+      - name: Publish PHP-FPM 7.4 to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: pierreribault/php-fpm
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: php-fpm/7.4/Dockerfile
+          buildoptions: "--pull"
+          tags: "7.4"
+
+  build-7.4-mongodb:
+    name: Publish php-fpm 7.4-mongodb on dockerhub
+    needs: [build-7.4]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "php-fpm/7.4/mongodb/Dockerfile"
+
+      - name: Run hadolint on Dockerfile
+        if: github.event_name == 'push' && steps.check_files.outputs.files_exists == 'true'
+        run: "docker run --rm -i hadolint/hadolint hadolint --ignore DL3008 - < php-fpm/7.4/mongodb/Dockerfile"
+
+      - name: Publish PHP-FPM 7.4-mongodb to Registry
+        if: steps.check_files.outputs.files_exists == 'true'
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: pierreribault/php-fpm
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          dockerfile: php-fpm/7.4/mongodb/Dockerfile
+          buildoptions: "--pull"
+          tags: "7.4-mongodb"
