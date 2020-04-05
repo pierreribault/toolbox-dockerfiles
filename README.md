@@ -1,6 +1,6 @@
 # 🛠 Toolbox - Dockerfiles 🐳
 
-This repository contains my basic images that meets **my personal needs** for my projects. All images present here are updated on Dockerhub at least one time each day.For example, if I push an update on any Dockerfile, all related images will be re-build and push. Moreover, each day at 1:00 am GMT+1, a cronjob start to re-build each image and push.  
+This repository contains my basic images that meets **my personal needs** for my projects. All images present here are updated on Dockerhub at least one time each day.For example, if I push an update on any Dockerfile, all related images will be re-build and push. Moreover, each day between **1:00 am GMT+1** and **2:00 am GMT+1**, a cronjob start to re-build each image and push.  
 
 Each time I alter an image, my GitHub Action run Hadolint on the Dockerfile. The column **Hadolint --ignore** signify than I voluntarily ignore some good practices to produce my images.
 

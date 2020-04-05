@@ -6,7 +6,7 @@ on:
       - 'nginx/1.16/**'
       - '.github/workflows/nginx-1-16-php-fpm-7-4.yml'
   schedule:
-    - cron:  '0 1 * * *'
+    - cron:  '10 1 * * *'
 
 jobs:
   build-1-6-php-fpm-7-4:
